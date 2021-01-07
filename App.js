@@ -13,10 +13,6 @@ import thunk from 'redux-thunk';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-import LandingScreen from './components/auth/Landing';
-import RegisterScreen from './components/auth/Register';
-import MainScreen from './components/Main';
-
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyD4G19gD_EFM0Av32HStFL9kuuJghUjpCQ",
@@ -31,6 +27,11 @@ const firebaseConfig = {
 if(firebase.apps.length === 0){
   firebase.initializeApp(firebaseConfig)
 }
+
+
+import LandingScreen from './components/auth/Landing';
+import RegisterScreen from './components/auth/Register';
+import MainScreen from './components/Main';
 
 const Stack = createStackNavigator();
 
@@ -80,7 +81,11 @@ export class App extends Component {
 
     return(
       <Provider store={store}>
-        <MainScreen/>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Main">
+            <Stack.Screen name="Main" component={MainScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     )
   }
