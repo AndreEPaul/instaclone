@@ -10,5 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# nvmrc for using latest node version
+.nvmrc
+
 # macOS
 .DS_Store
